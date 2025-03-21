@@ -1,38 +1,317 @@
-.App {
-  text-align: center;
+/* Hero Section */
+#hero {
+  background: linear-gradient(135deg, #121212, #232323); /* Dark gradient background */
+  color: white;
+  position: relative;
+  transition: background-color 0.3s ease;
+  overflow: hidden;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100vh; /* Full screen height */
+  animation: heroAnimation 3s ease-in-out infinite; /* Floating animation */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes heroAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay */
+  z-index: 0;
 }
 
-.App-link {
-  color: #61dafb;
+/* Profile Image Hover Effect */
+.hero-image {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease; /* Added filter transition */
+  border: 5px solid #fff;
+  z-index: 1;
 }
 
-@keyframes App-logo-spin {
+.hero-image.hovered {
+  transform: scale(1.2); /* Zoom effect on hover */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  filter: brightness(1.2); /* Slight brightening on hover */
+}
+
+/* Animated Text */
+.animated-text {
+  animation: fadeInUp 2s ease-in-out, textGlow 1.5s ease-in-out infinite alternate; /* Added text glow and upward fade animation */
+  z-index: 1; /* Ensures the text appears above the overlay */
+  color: white; /* Ensure text is readable */
+  margin-top: 30px; /* Adds space from the image */
+}
+
+@keyframes fadeInUp {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(50px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.4);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* Button Hover Effect */
+.hero-btn {
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Added shadow transition */
+  background-color: #ffbf00; /* Bright button color */
+  z-index: 10; /* Ensure button is above everything else */
+  padding: 14px 24px;
+  font-size: 1.2rem;
+  border: none; /* Ensure no border */
+  cursor: pointer; /* Make sure it looks clickable */
+  pointer-events: auto; /* Ensure pointer events are enabled */
+  position: relative; /* Position it above the overlay */
+}
+
+.hero-btn:hover {
+  transform: translateY(-5px); /* Button lift effect */
+  background-color: #ff8c00; /* Slightly darker shade on hover */
+  box-shadow: 0 8px 20px rgba(255, 140, 0, 0.4); /* Added shadow on hover */
+}
+
+/* Fade-in Animation for Text */
+.fade-in-text {
+  opacity: 0;
+  animation: fadeInText 2s ease forwards 1s; /* Text fades in after 1 second */
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #hero h2 {
+    font-size: 2.5rem; /* Smaller font size on mobile */
+  }
+
+  #hero p {
+    font-size: 1.1rem; /* Smaller text for mobile view */
+  }
+
+  #hero .hero-btn {
+    padding: 12px 20px;
+    font-size: 1rem; /* Adjust button size on mobile */
+  }
+}
+/* Navbar Styles */
+.navbar {
+  transition: background-color 0.3s ease;
+}
+
+/* Navbar Link Styles */
+.navbar .nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  color: #ffbf00; /* Bright color for hover */
+  transform: scale(1.1); /* Slight scaling effect */
+  text-shadow: 0 0 15px rgba(255, 191, 0, 0.8), 0 0 30px rgba(255, 191, 0, 0.6); /* Glowing effect */
+}
+
+/* Glow Animation for Hover Effect */
+.navbar .nav-link::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #ffbf00;
+  transition: width 0.3s ease, left 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.navbar .nav-link:hover::before {
+  width: 100%;
+  left: 0;
+  background: rgba(255, 191, 0, 0.6);
+  box-shadow: 0 0 15px rgba(255, 191, 0, 0.8); /* Subtle glowing underline effect */
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .navbar {
+  background-color: #121212;
+}
+
+body.dark-mode .navbar .nav-link {
+  color: #ddd;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .navbar .nav-link:hover {
+  color: #ffbf00;
+  text-shadow: 0 0 15px rgba(255, 191, 0, 0.8), 0 0 30px rgba(255, 191, 0, 0.6); /* Glowing effect */
+}
+
+body.dark-mode .navbar .navbar-toggler {
+  border-color: #444;
+}
+
+body.dark-mode .navbar .navbar-toggler-icon {
+  background-color: #ddd;
+}
+
+/* Navbar Scroll Effect */
+.navbar-scroll {
+  background-color: rgba(0, 0, 0, 0.8); /* Darker navbar when scrolling */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for more depth */
+}
+
+/* Dark Mode Toggle Button */
+button {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff8c00; /* Slightly darker shade */
+  transform: scale(1.1); /* Hover zoom effect */
+}
+
+/* Dark Mode Toggle Button (dark theme) */
+body.dark-mode button {
+  background-color: #ffbf00;
+  color: #121212;
+}
+
+body.dark-mode button:hover {
+  background-color: #ff8c00;
+  transform: scale(1.1);
+}
+/* Footer Styles */
+.footer {
+  background-color: #121212; /* Dark background */
+  color: #fff;
+  padding: 40px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.footer .footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Space between icons */
+}
+
+.footer .social-icon {
+  font-size: 2.5rem;
+  color: #fff;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer .social-icon:hover {
+  color: #ffbf00; /* Golden color on hover */
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* LinkedIn Icon */
+.footer .linkedin:hover {
+  color: #0077b5;
+}
+
+/* GitHub Icon */
+.footer .github:hover {
+  color: #333;
+}
+
+/* Twitter Icon */
+.footer .twitter:hover {
+  color: #1da1f2;
+}
+
+/* Email Icon */
+.footer .email:hover {
+  color: #e44d26;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer .footer-links {
+    flex-direction: column; /* Stack icons vertically on small screens */
+  }
+
+  .footer .social-icon {
+    font-size: 2rem; /* Slightly smaller icons on mobile */
+  }
+}
+.card-body {
+  padding: 20px;
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.card .btn {
+  transition: background-color 0.3s ease;
+}
+
+.card .btn:hover {
+  background-color: #0056b3;
+}
+/* Add this to your App.css or a separate CSS file */
+/* Resize the image to a smaller, more appropriate size */
+/* Container for the image */
+.card-img-top {
+  display: flex; 
+  justify-content: center;  /* Horizontally center the image */
+  align-items: center;      /* Vertically center the image */
+  height: 150px;            /* Ensure the card container has the correct height */
+}
+
+/* Container for the image */
+.card-img-top {
+  display: flex; 
+  justify-content: center;  /* Horizontally center the image */
+  align-items: center;      /* Vertically center the image */
+  height: 150px;            /* Ensure the card container has the correct height */
+  margin-top: 10px;         /* Optional: Add a little top margin to push it down */
+}
+
+/* Resize the image to a smaller, more appropriate size */
+
