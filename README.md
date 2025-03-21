@@ -45,7 +45,7 @@ This is my personal portfolio website, built using **React.js** and hosted on **
 
 You can check out the live version of my portfolio website by clicking the link below:
 
-[🔗 View Live Portfolio](https://ahsanlaeeq.github.io/AhsanLaeeq-portfolio/)
+[🔗 View Live Portfolio](https://ahsanlaeeq.github.io/Portfolio_AhsanLaeeq/)
 
 ---
 
